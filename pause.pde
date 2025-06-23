@@ -1,5 +1,5 @@
 void pauseScreen() {
-  fill(0, 0, 0, 150);
+  fill(0, 0, 150);
   rect(0, 0, width, height);
   
   fill(white);

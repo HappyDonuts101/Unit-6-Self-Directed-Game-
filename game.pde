@@ -1,5 +1,4 @@
 void gameScreen() {
-    // Set background color
     background(darkblue);
 
     // SCORE AND LIVES DISPLAY
@@ -7,7 +6,7 @@ void gameScreen() {
     noStroke();
     rect(20, 20, 200, 60); 
     rect(width-220, 20, 200, 60);
-    fill(255); // White text
+    fill(255); 
     textSize(32);
     textAlign(LEFT, TOP);
     text("Score: " + score, 30, 30); 
@@ -28,12 +27,12 @@ void gameScreen() {
             fill(bunkerColors[bunkerCounter]);
             rect(bunkerX[bunkerCounter], bunkerY, bunkerWidth, bunkerHeight);
             
-            // Draw triangular top of bunker
+           
             triangle(bunkerX[bunkerCounter], bunkerY, 
                     bunkerX[bunkerCounter]+10, bunkerY-10, 
                     bunkerX[bunkerCounter]+bunkerWidth, bunkerY);
             
-            // Draw damage notches
+          
             fill(darkblue);
             triangle(bunkerX[bunkerCounter]+20, bunkerY, 
                     bunkerX[bunkerCounter]+30, bunkerY-10, 
@@ -49,7 +48,7 @@ void gameScreen() {
     int enemyIndex = 0;
     while (enemyIndex < n) {
         if (enemyAlive[enemyIndex]) {
-            // Set color based on row (y-position)
+           
             if (y[enemyIndex] == 100) fill(pink);      
             else if (y[enemyIndex] == 170) fill(purple); 
             else if (y[enemyIndex] == 240) fill(red);    
@@ -108,7 +107,7 @@ boolean hitDetected = false;
 
 while (i < n && !hitDetected) {
     if (enemyAlive[i]) {
-        // Check if laser overlaps with enemy
+        // Laser overlaps with enemy
         boolean hitLeft = laserX < x[i] + brickw;
         boolean hitRight = laserX + laserWidth > x[i];
         boolean hitTop = laserY < y[i] + brickh;
@@ -135,7 +134,7 @@ void updateEnemyProjectiles() {
 
     // ======== BULLET SPAWNING SECTION ========
 
-    if (millis() - lastShotTime > shotDelay) {// Checks if enough time has passed since the last shot
+    if (millis() - lastShotTime > shotDelay) {
         lastShotTime = millis(); 
 
         // Random number 
@@ -194,10 +193,10 @@ void updateEnemyProjectiles() {
             else {
                 // ===  collision with the paddle ===
                 boolean hitPaddle = 
-                    (enemyProjY[i] + enemyProjHeight >= paddleY) && // Bullet hits top of paddle
-                    (enemyProjY[i] <= paddleY + paddleHeight) && // Bullet hits bottom of paddle
-                    (enemyProjX[i] + enemyProjWidth / 2 >= paddleX) && // Bullet right edge is beyond paddle left
-                    (enemyProjX[i] - enemyProjWidth / 2 <= paddleX + paddleWidth); // Bullet left edge is before paddle right
+                    (enemyProjY[i] + enemyProjHeight >= paddleY) && 
+                    (enemyProjY[i] <= paddleY + paddleHeight) && 
+                    (enemyProjX[i] + enemyProjWidth / 2 >= paddleX) && 
+                    (enemyProjX[i] - enemyProjWidth / 2 <= paddleX + paddleWidth); 
 
                 if (hitPaddle) {
                     lives--; 
